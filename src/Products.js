@@ -84,7 +84,7 @@ function Product() {
             .catch((error) => {
                 console.error(error);
             });
-    }, []);
+    }, [decoded.role]);
 
     useEffect(() => {
         // Fetch products initially based on user role and store ID
@@ -93,7 +93,7 @@ function Product() {
         } else if (storeId) {
             fetchProducts(storeId);
         }
-    }, [selectedStore, userRole, storeId, category]);
+    }, [selectedStore, userRole, storeId, category,fetchProducts]);
 
     return (
         <section

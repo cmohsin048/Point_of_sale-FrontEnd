@@ -10,7 +10,7 @@ import Sales from '../dashboraditems/Sales'
 import Stores from '../dashboraditems/Stores';
 import Stockpurchase from '../dashboraditems/Stockpurchase'
 import Epenses from '../dashboraditems/Expenses'
-import Typography from '@mui/material/Typography';
+
 import Products from '../Products'
 const defaultTheme = createTheme();
 

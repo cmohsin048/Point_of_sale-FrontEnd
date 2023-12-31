@@ -36,7 +36,7 @@ export default function Chart() {
 
   useEffect(() => {
     fetchData();
-  }, [userRole, storeId]); // Empty dependency array to run once on component mount
+  }, [userRole, storeId,fetchData]); // Empty dependency array to run once on component mount
 
   return (
     <React.Fragment>
