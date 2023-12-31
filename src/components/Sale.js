@@ -179,7 +179,7 @@ function SaleForm() {
     return () => {
       clearInterval(checkLowQuantityProductsInterval);
     };
-  }, []);
+  }, [products]);
 
 
 
