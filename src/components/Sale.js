@@ -53,8 +53,8 @@ function SaleForm() {
       setSaleData((prevSaleData) => ({
         ...prevSaleData,
         productName: name,
-        price: '', 
-        productID: '', 
+        price: '',
+        productID: '',
       }));
     }
   };
@@ -133,26 +133,7 @@ function SaleForm() {
       console.error('Error submitting sale:', error);
     }
   };
-    const checkLowQuantityProductsAlert = () => {
-    const currentTime = new Date();
-    const hours = currentTime.getHours();
 
-    // Check if it's 10 am or 3 pm and it's a new day
-    if ((hours === 10 || hours === 15) && isNewDay()) {
-      const lowQuantityProducts = products.filter((product) => product.quantity < 30);
-
-      if (lowQuantityProducts.length > 0) {
-        let alertMessage = 'Low quantity products:\n';
-
-        lowQuantityProducts.forEach((product) => {
-          alertMessage += `Product Name: ${product.Name}, Quantity: ${product.quantity}\n`;
-        });
-
-        alert(alertMessage);
-        markDayAsAlerted();
-      }
-    }
-  };
 
   // Function to check if it's a new day (compared to the last alert date)
   const isNewDay = () => {
@@ -169,16 +150,36 @@ function SaleForm() {
   };
 
 
- // eslint-disable-next-line react-hooks/exhaustive-deps
-useEffect(() => {
-  const checkLowQuantityProductsInterval = setInterval(() => {
-    checkLowQuantityProductsAlert();
-  }, 1000 * 60); // Check every minute (adjust as needed)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    const checkLowQuantityProductsAlert = () => {
+      const currentTime = new Date();
+      const hours = currentTime.getHours();
 
-  return () => {
-    clearInterval(checkLowQuantityProductsInterval);
-  };
-}, []);
+      // Check if it's 10 am or 3 pm and it's a new day
+      if ((hours === 10 || hours === 15) && isNewDay()) {
+        const lowQuantityProducts = products.filter((product) => product.quantity < 30);
+
+        if (lowQuantityProducts.length > 0) {
+          let alertMessage = 'Low quantity products:\n';
+
+          lowQuantityProducts.forEach((product) => {
+            alertMessage += `Product Name: ${product.Name}, Quantity: ${product.quantity}\n`;
+          });
+
+          alert(alertMessage);
+          markDayAsAlerted();
+        }
+      }
+    };
+    const checkLowQuantityProductsInterval = setInterval(() => {
+      checkLowQuantityProductsAlert();
+    }, 1000 * 60); // Check every minute (adjust as needed)
+
+    return () => {
+      clearInterval(checkLowQuantityProductsInterval);
+    };
+  }, []);
 
 
 
@@ -228,7 +229,7 @@ useEffect(() => {
     <div>
       <h2>Sale Form</h2>
       {userRole === 'Admin' && (
-        <FormControl fullWidth sx={{ mt: 3 ,width:300}}>
+        <FormControl fullWidth sx={{ mt: 3, width: 300 }}>
           <InputLabel htmlFor="store">Select Store</InputLabel>
           <Select
             label="Select Store"
@@ -339,7 +340,7 @@ useEffect(() => {
         <button type="submit" className="add">
           Submit Sale
         </button>
-        
+
       </form>
       <FormControl fullWidth sx={{ mt: 3, width: 300 }}>
         <InputLabel htmlFor="paymentMethod">Payment Method</InputLabel>
