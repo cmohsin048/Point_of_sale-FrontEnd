@@ -12,31 +12,31 @@ export default function Sales() {
   const decoded = jwtDecode(jwt);
   const userRole = decoded.role;
 
-  const fetchData = async () => {
-    try {
-      let response;
-      if (userRole === 'Admin') {
-        response = await axios.get('https://posbackend-4bid.onrender.com/store/getexpense');
-      } else {
-        response = await axios.get(`https://posbackend-4bid.onrender.com/store/storeexpense?store=${storeId}`);
+ 
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let response;
+        if (userRole === 'Admin') {
+          response = await axios.get('https://posbackend-4bid.onrender.com/store/getexpense');
+        } else {
+          response = await axios.get(`https://posbackend-4bid.onrender.com/store/storeexpense?store=${storeId}`);
+        }
+    
+        if (Array.isArray(response.data)) {
+          setExpenses(response.data);
+        } else {
+          console.error('Response data is not an array of expenses.');
+        }
+      } catch (error) {
+        alert(error);
+        // Handle the error here, e.g., show a message to the user
       }
-  
-      
-  
-      if (Array.isArray(response.data)) {
-        setExpenses(response.data);
-      } else {
-        console.error('Response data is not an array of expenses.');
-      }
-    } catch (error) {
-      alert(error);
-      // Handle the error here, e.g., show a message to the user
-    }
-  };
-  
-  useEffect(() => {   
+    };
     fetchData();
-  }, [userRole, storeId,fetchData]);
+  }, [userRole, storeId]);
+  
 
   return (
     <React.Fragment>

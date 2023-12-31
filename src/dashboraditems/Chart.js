@@ -13,30 +13,30 @@ export default function Chart() {
   const jwt = localStorage.getItem('token');
   const decoded = jwtDecode(jwt);
   const userRole = decoded.role;
-  
-  const fetchData = async () => {
-    try {
-      let response;
-      if (userRole === 'Admin') {
-        response = await axios.get('https://posbackend-4bid.onrender.com/store/getsales');
-      } else {
-        response = await axios.get(`https://posbackend-4bid.onrender.com/store/Storesales?store=${storeId}`);
-      }
-
-      const formattedData = response.data.map((sale, index) => ({
-        saleNumber: `Sale ${index + 1}`,
-        amount: sale.totalAmount,
-      }));
-
-      setData(formattedData);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let response;
+        if (userRole === 'Admin') {
+          response = await axios.get('https://posbackend-4bid.onrender.com/store/getsales');
+        } else {
+          response = await axios.get(`https://posbackend-4bid.onrender.com/store/Storesales?store=${storeId}`);
+        }
+  
+        const formattedData = response.data.map((sale, index) => ({
+          saleNumber: `Sale ${index + 1}`,
+          amount: sale.totalAmount,
+        }));
+  
+        setData(formattedData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
     fetchData();
-  }, [userRole, storeId,fetchData]); // Empty dependency array to run once on component mount
+  }, [userRole, storeId]);
+ 
 
   return (
     <React.Fragment>

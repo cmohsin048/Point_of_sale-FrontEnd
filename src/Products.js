@@ -54,23 +54,23 @@ function Product() {
         setFilteredProducts(filtered);
     };
 
-    const fetchProducts = (storeID) => {
-        let apiUrl = `https://posbackend-4bid.onrender.com/store/Allproducts?store=${storeID}`;
+    // const fetchProducts = (storeID) => {
+    //     let apiUrl = `https://posbackend-4bid.onrender.com/store/Allproducts?store=${storeID}`;
         
-        axios
-            .get(apiUrl)
-            .then((response) => {
-                const data = response.data;
-                setAllProducts(data);
+    //     axios
+    //         .get(apiUrl)
+    //         .then((response) => {
+    //             const data = response.data;
+    //             setAllProducts(data);
                 
-                // Filter products based on the selected category if one is selected
-                const filtered = category ? data.filter((product) => product.category === category) : data;
-                setFilteredProducts(filtered);
-            })
-            .catch((error) => {
-                console.error('Error fetching products:', error);
-            });
-    };
+    //             // Filter products based on the selected category if one is selected
+    //             const filtered = category ? data.filter((product) => product.category === category) : data;
+    //             setFilteredProducts(filtered);
+    //         })
+    //         .catch((error) => {
+    //             console.error('Error fetching products:', error);
+    //         });
+    // };
 
     useEffect(() => {
         // Fetch the list of stores
@@ -87,14 +87,31 @@ function Product() {
     }, [decoded.role]);
 
     useEffect(() => {
+        const fetchProducts = (storeID) => {
+            let apiUrl = `https://posbackend-4bid.onrender.com/store/Allproducts?store=${storeID}`;
+    
+            axios
+                .get(apiUrl)
+                .then((response) => {
+                    const data = response.data;
+                    setAllProducts(data);
+    
+                    // Filter products based on the selected category if one is selected
+                    const filtered = category ? data.filter((product) => product.category === category) : data;
+                    setFilteredProducts(filtered);
+                })
+                .catch((error) => {
+                    console.error('Error fetching products:', error);
+                });
+        };
+    
         // Fetch products initially based on user role and store ID
         if (userRole === 'Admin' && selectedStore) {
             fetchProducts(selectedStore);
         } else if (storeId) {
             fetchProducts(storeId);
         }
-    }, [selectedStore, userRole, storeId, category,fetchProducts]);
-
+    }, [selectedStore, userRole, storeId, category]);
     return (
         <section
             style={{

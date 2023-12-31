@@ -12,32 +12,33 @@ export default function Stockpurchase() {
   const decoded = jwtDecode(jwt);
   const userRole = decoded.role;
 
-  const fetchData = async () => {
-    try {
-      let response;
-      if (userRole === 'Admin') {
-        response = await axios.get('https://posbackend-4bid.onrender.com/store/getpurchase');
-      } else {
-        response = await axios.get(`https://posbackend-4bid.onrender.com/store/Storepurchase?store=${storeId}`);
-      }
-
-
-
-      if (Array.isArray(response.data)) {
-        const totalAmount = response.data.reduce((acc, purchase) => acc + purchase.totalAmount, 0);
-
-        setTotalPurchase(totalAmount);
-      } else {
-        console.error('Response data is not an array of purchases.');
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let response;
+        if (userRole === 'Admin') {
+          response = await axios.get('https://posbackend-4bid.onrender.com/store/getpurchase');
+        } else {
+          response = await axios.get(`https://posbackend-4bid.onrender.com/store/Storepurchase?store=${storeId}`);
+        }
+  
+  
+  
+        if (Array.isArray(response.data)) {
+          const totalAmount = response.data.reduce((acc, purchase) => acc + purchase.totalAmount, 0);
+  
+          setTotalPurchase(totalAmount);
+        } else {
+          console.error('Response data is not an array of purchases.');
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
     fetchData();
-  }, [userRole, storeId,fetchData]);
+  }, [userRole, storeId]);
 
   return (
     <React.Fragment>

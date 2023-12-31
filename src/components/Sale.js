@@ -168,16 +168,18 @@ function SaleForm() {
     localStorage.setItem('lastAlertDate', today);
   };
 
-  // Set up an interval to check for low quantity products
-  useEffect(() => {
-    const checkLowQuantityProductsInterval = setInterval(() => {
-      checkLowQuantityProductsAlert();
-    }, 1000 * 60); // Check every minute (adjust as needed)
 
-    return () => {
-      clearInterval(checkLowQuantityProductsInterval);
-    };
-  }, [checkLowQuantityProductsAlert]);
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+useEffect(() => {
+  const checkLowQuantityProductsInterval = setInterval(() => {
+    checkLowQuantityProductsAlert();
+  }, 1000 * 60); // Check every minute (adjust as needed)
+
+  return () => {
+    clearInterval(checkLowQuantityProductsInterval);
+  };
+}, []);
+
 
 
   // Fetch products when the component is mounted
