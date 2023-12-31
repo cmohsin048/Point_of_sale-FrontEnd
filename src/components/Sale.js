@@ -177,7 +177,7 @@ function SaleForm() {
     return () => {
       clearInterval(checkLowQuantityProductsInterval);
     };
-  }, [checkLowQuantityProductsInterval]);
+  }, [checkLowQuantityProductsAlert]);
 
 
   // Fetch products when the component is mounted
