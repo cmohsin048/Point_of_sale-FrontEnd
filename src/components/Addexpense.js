@@ -15,13 +15,13 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
-import jwtDecode from 'jwt-decode';
+
 import AttachMoneyOutlinedIcon from '@mui/icons-material/AttachMoneyOutlined';
 
 const defaultTheme = createTheme();
 
 export default function AddExpense() {
-    const navigate = useNavigate();
+   
     const storeId = useSelector((state) => state.auth.storeID);
 
 

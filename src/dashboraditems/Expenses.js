@@ -36,7 +36,7 @@ export default function Sales() {
   
   useEffect(() => {   
     fetchData();
-  }, []);
+  }, [userRole, storeId]);
 
   return (
     <React.Fragment>

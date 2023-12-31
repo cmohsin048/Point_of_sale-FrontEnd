@@ -37,7 +37,7 @@ export default function Stockpurchase() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [userRole, storeId]);
 
   return (
     <React.Fragment>

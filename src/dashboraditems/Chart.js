@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { useTheme } from '@mui/material/styles';
 import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
-import Title from './Title';
+
 import jwtDecode from 'jwt-decode';
 export default function Chart() {
   const theme = useTheme();
@@ -36,7 +36,7 @@ export default function Chart() {
 
   useEffect(() => {
     fetchData();
-  }, []); // Empty dependency array to run once on component mount
+  }, [userRole, storeId]); // Empty dependency array to run once on component mount
 
   return (
     <React.Fragment>

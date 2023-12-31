@@ -9,7 +9,7 @@ import Chart from '../dashboraditems/Chart'
 import Sales from '../dashboraditems/Sales'
 import Stockpurchase from '../dashboraditems/Stockpurchase'
 import Epenses from '../dashboraditems/Expenses'
-import Typography from '@mui/material/Typography';
+
 import Products from '../Products'
 import 'bootstrap/dist/css/bootstrap.min.css';
 const defaultTheme = createTheme();
