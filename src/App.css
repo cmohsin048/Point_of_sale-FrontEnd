@@ -1,0 +1,80 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+.check{
+  width: 100%;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+/* Apply these styles to your input fields */
+.form-input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+/* Style for the focused input field */
+.form-input:focus {
+  outline: none;
+  border-color: #2196F3; /* Change this color to match your theme */
+  box-shadow: 0 0 5px rgba(33, 150, 243, 0.5); /* Change this color to match your theme */
+}
+.add{
+  color: white;
+  background-color: #1565c0;
+  outline: none;
+  border: none;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.upper{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.selectproduct{
+  max-width: 200px;
+  width:200px
+}
