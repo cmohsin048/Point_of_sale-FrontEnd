@@ -18,7 +18,7 @@ import StorefrontTwoToneIcon from '@mui/icons-material/StorefrontTwoTone';
 import { Link } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 const Adminpages = [
-    { label: "Dashboard", route: "/Admindashboard" },
+    { label: "Mainscreen", route: "/Admindashboard" },
     { label: 'Add Products', route: '/Addproduct' },
     { label: 'Add User', route: '/register' },
     { label: 'Add Store', route: '/Addstore' },
